@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CareerBoostHome from "./CareerBoostHome";
-import "./index.css"; // Optional if you’re using Tailwind or other global styles
+import Profile from "./Profile";
+import UploadCV from "./UploadCV";
+import "./index.css";
 
 const rootElement = document.getElementById("root");
 
@@ -13,6 +16,12 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <CareerBoostHome />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<CareerBoostHome />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/upload" element={<UploadCV />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
