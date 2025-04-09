@@ -1,40 +1,79 @@
-# Devvengers
-
 # InternAIze
 
-InternAIze is an AI-powered web application that helps students and job seekers optimize their internship applications, prepare for interviews, and discover career paths with data-driven guidance.
+**InternAIze** is an AI-powered internship assistant that helps students and job seekers improve their resume, explore career opportunities, and prepare for interviews using intelligent insights and interactive guidance.
+
+🔗 **GitHub Repository:** [github.com/Dewninim/Devvengers](https://github.com/Dewninim/Devvengers)
+
+---
 
 ## 🚀 Features
 
-- 🔍 **Resume & Cover Letter Analysis** – Upload your resume and get AI-powered feedback to improve content, grammar, and impact.
-- 📈 **Skill Gap Identification** – Personalized learning suggestions based on your target industry.
-- 🤖 **Interactive Chatbot** – Get career advice based on your selected industry and field of interest.
-- 🧠 **Mock Interviews & Industry Tips** – Prepare confidently with insights from the field.
-- 👥 **Community and Mentorship** – Connect with peers and mentors to stay ahead.
-- 💼 **Internship Matching** – Discover opportunities aligned with your strengths.
+- 📄 **AI Resume & Cover Letter Analysis**  
+  Upload and receive real-time suggestions on grammar, clarity, formatting, and content strength.
+
+- 🧠 **Skill Gap Detection**  
+  Based on your resume and career interests, the app highlights missing skills and learning paths.
+
+- 💬 **Interactive Career Chatbot**  
+  Choose your industry and field to receive tailored career advice.
+
+- 🎯 **Internship Matching**  
+  Personalized internship suggestions based on your strengths and interests.
+
+- 📚 **Mock Interview Prep**  
+  Gain confidence with practice questions and AI feedback.
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js + Tailwind CSS + Vite
-- **Icons**: Lucide-react
-- **Component Library**: shadcn/ui
-- **PDF Parsing**: pdfjs-dist (for resume analysis)
+- **Frontend**: React.js (with Vite)
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **PDF Analysis**: pdfjs-dist
 - **Routing**: React Router DOM
+- **Icons**: Lucide-react
 
-## 📂 Project Structure
+---
+
+## 🧱 Folder Structure
 
 
-## 💬 Chatbot Integration
+---
 
-The chatbot appears as a floating 💬 icon at the bottom-right corner of the screen. When clicked, it opens an interactive panel where users can:
+## 💬 Chatbot
 
-- Select an industry and field.
-- Receive tailored advice on how to improve their internship chances.
-- Ask follow-up questions via free text.
+The chatbot appears as a floating 💬 icon on all pages. When clicked:
 
-## 🧪 Run Locally
+1. Users choose their **industry** (e.g., IT, Finance, Healthcare).
+2. They select a **field** (e.g., Software Engineering, FinTech).
+3. The chatbot replies with tailored skill-building advice.
 
-### 1. Clone the repository
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the Repo
 
 ```bash
-https://github.com/Dewninim/Devvengers.git
+git clone https://github.com/Dewninim/Devvengers.git
+cd Devvengers
+
+### 2. Install Dependencies
+
+npm install
+
+### 3. Run the App
+
+npm run dev
+
+🧪 Build for Production
+
+npm run build
+
+🚀 Deployment
+Deploy the /dist folder using:
+
+Vercel – Recommended for React
+Netlify
+GitHub Pages
