@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Briefcase, ClipboardList, FileText, Search } from "lucide-react";
 
 export default function HomePage() {
   const [showSignIn, setShowSignIn] = useState(false);
+  const navigate = useNavigate(); // <-- Added
 
   return (
     <div className="bg-white text-black font-sans w-full">
@@ -14,8 +16,18 @@ export default function HomePage() {
           <span className="text-green-600">AIze</span>
         </div>
         <nav className="flex flex-wrap items-center space-x-4 mt-2 sm:mt-0">
-          <a href="#" className="text-gray-700 hover:text-black text-sm">CareerBoost</a>
-          <a href="#" className="text-gray-700 hover:text-black text-sm">About</a>
+          <span
+            onClick={() => navigate("/#interview")} // Navigate to the CareerBoost section on the homepage
+            className="text-gray-700 hover:text-black text-sm cursor-pointer"
+          >
+            CareerBoost
+          </span>
+          <span
+            onClick={() => document.getElementById('key-features')?.scrollIntoView({ behavior: 'smooth' })} // Scroll to Key Features
+            className="text-gray-700 hover:text-black text-sm cursor-pointer"
+          >
+            About
+          </span>
           <a href="#" className="text-gray-700 hover:text-black text-sm">Sign Up</a>
           <Button
             className="bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2"
@@ -87,7 +99,10 @@ export default function HomePage() {
               <li>Lack of interview preparation</li>
               <li>No industry-specific keywords</li>
             </ul>
-            <Button className="mt-4 bg-green-500 text-white hover:bg-green-600 text-sm px-4 py-2">
+            <Button
+              className="mt-4 bg-green-500 text-white hover:bg-green-600 text-sm px-4 py-2"
+              onClick={() => navigate("/upload")} // <-- Navigation on click
+            >
               Upload your resume now & start improving today!
             </Button>
           </div>
@@ -100,7 +115,7 @@ export default function HomePage() {
       </section>
 
       {/* Key Features */}
-      <section className="py-10 px-4 text-left max-w-4xl mx-auto">
+      <section id="key-features" className="py-10 px-4 text-left max-w-4xl mx-auto">
         <h4 className="font-semibold mb-2 text-base sm:text-lg">Key Features</h4>
         <ul className="text-sm text-gray-700 space-y-1">
           <li>AI-Powered Resume & Cover Letter Analysis</li>
