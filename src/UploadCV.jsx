@@ -4,12 +4,14 @@ import * as pdfjsLib from "pdfjs-dist";
 import { Button } from "@/components/ui/button";
 import { FaLinkedin, FaInstagram, FaFacebook, FaBehance } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const ResumeUploadPage = () => {
   const fileInputRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
@@ -36,7 +38,7 @@ const ResumeUploadPage = () => {
           setLoading(false);
           return;
         }
-        console.log("Extracted Text:", text); // Log to ensure text extraction works
+        console.log("Extracted Text:", text);
       } catch (err) {
         console.error("Error reading file:", err);
         setLoading(false);
@@ -102,8 +104,8 @@ const ResumeUploadPage = () => {
 
     const scores = {
       content: Math.min(100, wordCount / 5),
-      grammar: 80,  // Placeholder for future grammar checking logic
-      clarity: 90,  // Placeholder for clarity check logic
+      grammar: 80,
+      clarity: 90,
       length: wordCount >= 300 && wordCount <= 800 ? 80 : 60,
       impact: hasNumbers && bulletPoints > 2 ? 80 : 60,
       repetition: 100 - Math.min(40, mostRepeated * 5),
@@ -130,16 +132,36 @@ const ResumeUploadPage = () => {
     <div className="min-h-screen bg-white text-center text-black p-6">
       <header className="flex justify-between items-center py-4 px-6 bg-white shadow-md rounded-xl">
         <div className="flex items-center gap-2">
-          <img src="/logo-icon (2).png" alt="logo" className="w-8 h-8" />
+          <img
+            src="/logo-icon (2).png"
+            alt="logo"
+            className="w-8 h-8 cursor-pointer"
+            onClick={() => navigate("/profile")} // Navigate to profile page
+          />
           <h1 className="text-xl font-bold">
             Intern<span className="text-green-600">Alze</span>
           </h1>
         </div>
         <nav className="flex gap-8 text-gray-700 font-medium">
-          <span>CareerBoost</span>
-          <span>About</span>
+          <button
+            onClick={() => navigate("/#interview")} // Navigate to interview section on the homepage
+            className="hover:underline"
+          >
+            CareerBoost
+          </button>
+          <button
+            onClick={() => navigate("/")} // Navigate to CareerBoost page (homepage)
+            className="hover:underline"
+          >
+            About
+          </button>
         </nav>
-        <img src="/profile.png" alt="user" className="w-10 h-10 rounded-full border" />
+        <img
+          src="/profile.png"
+          alt="user"
+          className="w-10 h-10 rounded-full border cursor-pointer"
+          onClick={() => navigate("/profile")} // Navigate to profile page
+        />
       </header>
 
       <div className="mt-16 text-center">
@@ -216,13 +238,7 @@ const ResumeUploadPage = () => {
         <p>
           Copyright © 2008-2025. <strong>InternAlze</strong> and logo are proprietary trademarks of <strong>InternAlze</strong>.
         </p>
-        <div className="flex justify-center gap-4 mt-4 text-xl">
-          <MdEmail className="cursor-pointer" />
-          <FaLinkedin className="cursor-pointer" />
-          <FaFacebook className="cursor-pointer" />
-          <FaInstagram className="cursor-pointer" />
-          <FaBehance className="cursor-pointer" />
-        </div>
+       
       </footer>
     </div>
   );
