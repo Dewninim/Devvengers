@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Briefcase, ClipboardList, FileText, Search } from "lucide-react";
+import "@/components/ChatBot.css"; // <-- Add path to ChatBot.css
+import ChatBot from "@/components/ChatBot.jsx";
+
 
 export default function HomePage() {
   const [showSignIn, setShowSignIn] = useState(false);
-  const navigate = useNavigate(); // <-- Added
+  const navigate = useNavigate();
 
   return (
     <div className="bg-white text-black font-sans w-full">
@@ -17,13 +20,13 @@ export default function HomePage() {
         </div>
         <nav className="flex flex-wrap items-center space-x-4 mt-2 sm:mt-0">
           <span
-            onClick={() => navigate("/#interview")} // Navigate to the CareerBoost section on the homepage
+            onClick={() => navigate("/#interview")}
             className="text-gray-700 hover:text-black text-sm cursor-pointer"
           >
             CareerBoost
           </span>
           <span
-            onClick={() => document.getElementById('key-features')?.scrollIntoView({ behavior: 'smooth' })} // Scroll to Key Features
+            onClick={() => navigate("/careerboost#key-features")}
             className="text-gray-700 hover:text-black text-sm cursor-pointer"
           >
             About
@@ -101,7 +104,7 @@ export default function HomePage() {
             </ul>
             <Button
               className="mt-4 bg-green-500 text-white hover:bg-green-600 text-sm px-4 py-2"
-              onClick={() => navigate("/upload")} // <-- Navigation on click
+              onClick={() => navigate("/upload")}
             >
               Upload your resume now & start improving today!
             </Button>
@@ -115,7 +118,7 @@ export default function HomePage() {
       </section>
 
       {/* Key Features */}
-      <section id="key-features" className="py-10 px-4 text-left max-w-4xl mx-auto">
+      <section className="py-10 px-4 text-left max-w-4xl mx-auto">
         <h4 className="font-semibold mb-2 text-base sm:text-lg">Key Features</h4>
         <ul className="text-sm text-gray-700 space-y-1">
           <li>AI-Powered Resume & Cover Letter Analysis</li>
@@ -178,16 +181,13 @@ export default function HomePage() {
       {showSignIn && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-sm relative">
-            {/* Close Button */}
             <button
               className="absolute top-4 right-4 text-black text-xl"
               onClick={() => setShowSignIn(false)}
             >
               &times;
             </button>
-
             <h2 className="text-lg font-semibold mb-4">Sign in to your account</h2>
-
             <form className="space-y-4">
               <div>
                 <label className="block text-sm mb-1">Enter email</label>
@@ -221,6 +221,9 @@ export default function HomePage() {
           </div>
         </div>
       )}
+
+      {/* ChatBot Floating Icon */}
+      <ChatBot />
     </div>
   );
 }
